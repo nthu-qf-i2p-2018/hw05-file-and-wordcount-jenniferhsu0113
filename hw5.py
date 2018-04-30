@@ -29,7 +29,7 @@ def main(filename):
 
     # compute word count from all_words
     from collections import Counter
-    word_counter = Counter(all_words)
+    wordcounter = Counter(all_words)
     
 
     # dump to a csv file named "wordcount.csv":
@@ -37,26 +37,26 @@ def main(filename):
     # a,12345
     # I,23456
     # ...
-    csv_file= open('word_count.csv' , 'w')
-    with open('word_count.csv' , 'w') as csv_file:
+    csv_file= open('wordcount.csv' , 'w')
+    with open('wordcount.csv' , 'w') as csv_file:
         # create a csv writer from a file object (or descriptor)
         writer = csv.writer(csv_file)
         # write table head
         writer.writerow(['word', 'count'])
-        for word, count in word_counter.most_common():
+        for word, count in wordcounter.most_common():
             writer.writerow([word, count])
             # write all (word, count) pair into the csv writer
-            writer.writerows(word_counter.most_common())
+            writer.writerows(wordcounter.most_common())
 
     # dump to a json file named "wordcount.json"
     import json
-    json.dump(word_counter, open('word_count.json','w'))
+    json.dump(wordcounter, open('wordcount.json','w'))
 
 
     # BONUS: dump to a pickle file named "wordcount.pkl"
     # hint: dump the Counter object directly
     import pickle
-    pickle.dump(word_counter, open('word_count.pkl','wb'))
+    pickle.dump(wordcounter, open('wordcount.pkl','wb'))
 
 if __name__ == '__main__':
     main("i_have_a_dream.txt")
